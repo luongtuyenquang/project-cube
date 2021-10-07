@@ -1,11 +1,39 @@
+const Db = require('./dboprations')
+const student = require('./student')
+const dboprations = require('./dboprations')
+
+
 const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
 const app = express()
-const port = 3000
+const router = express.Router()
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
+app.use(cors())
+app.use('/server', router)
+
+app.use((request, responsive, next) => {
+    next()
+})
+// app.router('/student').get((request, responsive) => {
+//     dboprations.getOrders().then(result => {
+//         responsive.json(result[0])
+//     })
+// })
+app.get('/student', async(request, responsive) => {
+    try {
+        const data = await dboprations.getOrders();
+        responsive.send(data); 
+    } catch (error) {
+        console.log(error);
+    }
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+const port = process.env.PORT || 8000
+app.listen(port)
+console.log('running at: http://localhost:/'+port);
+
+//http://localhost:8000/student
+// module.exports = router

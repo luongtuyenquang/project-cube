@@ -1,9 +1,19 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import TableStudent from './component/TableStudent';
+import ModalHandle from './component/ModalHandle';
+import axios from 'axios';
+
+// const api = axios.create({
+//     baseURL: 'http://localhost:8000/student'
+// })
 
 function App() {
     const [list, setList] = useState([])
+
+    function handleClick(){
+        
+    }
     useEffect(() => {
         async function fetchAPI(){
             const url = 'http://localhost:8000/student'
@@ -21,10 +31,26 @@ function App() {
         })
         newList.splice(index, 1)
         setList(newList)
+
+        // api.delete('/')
+        // .then(data => {
+        //     setList(newList)
+        // })
+        // .catch(error => {
+        //     console.log(error);
+        // })
     }
+    
+    // api.get('/').then(res => {
+    //     console.log(res.data);
+    // })
+
+    
     return (
         <div className="App">
             <h1 className='title'>Quản lý sinh viên</h1>
+            <button type="button" className="btn btn-success bottom fz" onClick={handleClick}>Thêm sinh viên</button>
+            {/* <ModalHandle /> */}
             <TableStudent lists={list} delete={handleDelete}/>
         </div>
     );

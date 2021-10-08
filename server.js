@@ -22,6 +22,16 @@ app.use((request, responsive, next) => {
 //         responsive.json(result[0])
 //     })
 // })
+
+// app.post('http://localhost:8000/student', (req, res) => {
+//     var sql = "DELETE FROM dbo.Student "
+//             + "WHERE ID='"+req.body.ID+"'";
+//     connection.query(sql, function(err, results) {
+//       if (err) throw err;
+//       res.json({news: results});
+//     });
+//   });
+
 app.get('/student', async(request, responsive) => {
     try {
         const data = await dboprations.getOrders();

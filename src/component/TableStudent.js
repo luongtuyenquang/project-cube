@@ -1,9 +1,36 @@
+import ButtonsHandle from "./ButtonsHandle"
 
 function TableStudent(props) {
     const { lists } = props
-    const render = lists.map(list => {
+    const render = lists.map((list, index) => {
         return (
-            <table className="table table-bordered" key={list.ID}>
+            <tbody key={list.ID}>
+                    <tr>
+                        <td>{list.ID}</td>
+                        <td>{list.StudentCode}</td>
+                        <td>{list.Name}</td>
+                        <td>{list.Gender}</td>
+                        <td>{list.Phone1}</td>
+                        <td>{list.Phone2}</td>
+                        <td>{list.Email}</td>
+                        <td>{list.Image}</td>
+                        <td>{list.Address}</td>
+                        <td>{list.ProvinceID}</td>
+                        <td>{list.WardID}</td>
+                        <td>{list.DistrictID}</td>
+                        <td>{list.Birthday}</td>
+                        <td>{list.Note}</td>
+                        <td>{list.CreateBy}</td>
+                        <td>{list.CreateDate}</td>
+                        <td>{list.IsDelete}</td>
+                        <td>{list.Search}</td>
+                        <ButtonsHandle lists={index} delete={props.delete}/>
+                    </tr>
+                </tbody>
+        )
+    })
+    return (
+        <table className="table table-bordered">
                 <thead>
                     <tr className="success">
                         <th scope="col">ID</th>
@@ -27,37 +54,8 @@ function TableStudent(props) {
                         <th scope="col">Thao tác</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>{list.ID}</td>
-                        <td>{list.StudentCode}</td>
-                        <td>{list.Name}</td>
-                        <td>{list.Gender}</td>
-                        <td>{list.Phone1}</td>
-                        <td>{list.Phone2}</td>
-                        <td>{list.Email}</td>
-                        <td>{list.Image}</td>
-                        <td>{list.Address}</td>
-                        <td>{list.ProvinceID}</td>
-                        <td>{list.WardID}</td>
-                        <td>{list.DistrictID}</td>
-                        <td>{list.Birthday}</td>
-                        <td>{list.Note}</td>
-                        <td>{list.CreateBy}</td>
-                        <td>{list.CreateDate}</td>
-                        <td>{list.IsDelete}</td>
-                        <td>{list.Search}</td>
-                        <td>
-                        <button type="button" className="btn btn-success">Sửa</button>
-                        <button type="button" className="btn btn-danger">Xóa</button>
-                        </td>
-                    </tr>
-                </tbody>
+                {render}
             </table>
-        )
-    })
-    return (
-        render
     );
 }
 

@@ -11,9 +11,7 @@ import axios from 'axios';
 function App() {
     const [list, setList] = useState([])
 
-    function handleClick(){
-        
-    }
+    
     useEffect(() => {
         async function fetchAPI(){
             const url = 'http://localhost:8000/student'
@@ -44,13 +42,15 @@ function App() {
     // api.get('/').then(res => {
     //     console.log(res.data);
     // })
-
-    
+    const [isDisplayForm, setIsDisplayForm] = useState(false)
+    function handleClick(){
+        setIsDisplayForm(!isDisplayForm)
+    }
     return (
         <div className="App">
             <h1 className='title'>Quản lý sinh viên</h1>
             <button type="button" className="btn btn-success bottom fz" onClick={handleClick}>Thêm sinh viên</button>
-            {/* <ModalHandle /> */}
+            {isDisplayForm && <ModalHandle closeForm={handleClick}/>}
             <TableStudent lists={list} delete={handleDelete}/>
         </div>
     );

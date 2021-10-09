@@ -81,8 +81,8 @@ function ModalHandle(props) {
                             <input type='text'></input>
                         </div>
                         <div className='group center'>
-                            <button type="button" className="btn btn-success none fz">Thêm</button>
-                            <button type="button" className="btn btn-danger fz">Hủy</button>
+                            <button type="submit" className="btn btn-success none fz">Thêm</button>
+                            <button type="button" className="btn btn-danger fz" onClick={props.closeForm}>Hủy</button>
                         </div>
                         
                     </form>

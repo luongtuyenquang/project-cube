@@ -1,57 +1,57 @@
-import { useEffect, useState } from 'react';
 import './App.css';
-import TableStudent from './component/TableStudent';
-import ModalHandle from './component/ModalHandle';
-import axios from 'axios';
-
-// const api = axios.create({
-//     baseURL: 'http://localhost:8000/student'
-// })
 
 function App() {
-    const [list, setList] = useState([])
-
-    
-    useEffect(() => {
-        async function fetchAPI(){
-            const url = 'http://localhost:8000/student'
-            const res = await fetch(url)
-            const resJSON = await res.json()
-            setList(resJSON)
-        }
-        fetchAPI()
-    },[])
-    
-    function handleDelete(data){
-        const newList = [...list]
-        const index = newList.findIndex((elm, index) => {
-           return index === data
-        })
-        newList.splice(index, 1)
-        setList(newList)
-
-        // api.delete('/')
-        // .then(data => {
-        //     setList(newList)
-        // })
-        // .catch(error => {
-        //     console.log(error);
-        // })
-    }
-    
-    // api.get('/').then(res => {
-    //     console.log(res.data);
-    // })
-    const [isDisplayForm, setIsDisplayForm] = useState(false)
-    function handleClick(){
-        setIsDisplayForm(!isDisplayForm)
-    }
+   
     return (
         <div className="App">
-            <h1 className='title'>Quản lý sinh viên</h1>
-            <button type="button" className="btn btn-success bottom fz" onClick={handleClick}>Thêm sinh viên</button>
-            {isDisplayForm && <ModalHandle closeForm={handleClick}/>}
-            <TableStudent lists={list} delete={handleDelete}/>
+            <header>
+                <nav className="navbar navbar-inverse">
+                    <div className="container-fluid">
+                        <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul className="nav navbar-nav">
+                                <li><a href="#1">Trang chủ</a></li>
+                                <li><a href="#1">Quản lý sản phẩm</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <div className='container'>
+                <button type="button" className="btn btn-info mb-15">Thêm sản phẩm</button>
+                <div className="panel panel-success">
+                    <div className="panel-heading">Danh sách sản phẩm</div>
+                    <div className="panel-body">
+                    <table className="table table-bordered">
+                        <thead>
+                            <tr className="info">
+                            <th scope="col">STT</th>
+                            <th scope="col">Mã SP</th>
+                            <th scope="col">Tên SP</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Trạng thái</th>
+                            <th scope="col">Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>1</td>
+                                <td>iPhone XS Max</td>
+                                <td>1000</td>
+                                <td>
+                                    <span className="label label-success">Còn hàng</span>
+                                    {/* <span className="label label-default">Hết hàng</span> */}
+                                </td>
+                                <td>
+                                    <button type="button" className="btn btn-success mr-10">Sửa</button>
+                                    <button type="button" className="btn btn-danger">Xóa</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

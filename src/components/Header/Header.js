@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
    
@@ -7,8 +8,12 @@ export default function Header() {
                 <div className="container-fluid">
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul className="nav navbar-nav">
-                            <li><a href="#1">Trang chủ</a></li>
-                            <li><a href="#1">Quản lý sản phẩm</a></li>
+                            <li>
+                                <NavLink exact to='/home'>Trang chủ</NavLink>
+                            </li>
+                            <li>
+                                <NavLink exact to='/product-list'>Quản lý sản phẩm</NavLink>
+                            </li>
                         </ul>
                     </div>
                 </div>

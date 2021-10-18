@@ -1,17 +1,18 @@
 import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './components/Header/Header';
-import ProductList from './components/ProductList/ProductList';
+import Routes from './Routes';
 
 function App() {
    
     return (
-        <div className="App">
-            <Header />
-            <div className='container'>
-            <button type="button" className="btn btn-info mb-15">Thêm sản phẩm</button>
-               <ProductList />
+        <Router>
+            <div className="App">
+                <Header />
+               
             </div>
-        </div>
+            <Routes />
+        </Router>
     );
 }
 

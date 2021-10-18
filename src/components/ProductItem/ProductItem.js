@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import './ProductItem.css';
 
 export default function ProductItem(props) {
@@ -20,7 +21,7 @@ export default function ProductItem(props) {
                 </span>
             </td>
             <td>
-                <button type="button" className="btn btn-success mr-10 btn-pd">Sửa</button>
+                <NavLink to={`product/${product.id}/edit`} className="btn btn-success mr-10 btn-pd">Sửa</NavLink>
                 <button type="button" className="btn btn-danger btn-pd" onClick={()=> handleDelete(product.id)}>Xóa</button>
             </td>
         </tr>

@@ -18,9 +18,16 @@ function ProductList(props) {
     }, [])
     
     const renderProduct = products.map((product, index) => {
-        return <ProductItem product={product} key={index} index={index}/>
+        return <ProductItem product={product} key={index} index={index} delete={deleteProduct}/>
     })
 
+    function deleteProduct(id){
+        axios.delete(`https://616d1e8637f997001745d866.mockapi.io/api/products/${id}`)
+        const newProductList = products.filter((product) => {
+            return product.id !== id
+        })
+        setProduct(newProductList)
+    }
 
     return (
         <div className="panel panel-success">

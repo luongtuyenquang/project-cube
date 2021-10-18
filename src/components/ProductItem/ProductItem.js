@@ -1,13 +1,17 @@
 import './ProductItem.css';
 
 export default function ProductItem(props) {
+
     const product = props.product
     const index = props.index
-
+    
+    function handleDelete(id){
+        props.delete(id)
+    }
     return (
         <tr>
             <th scope="row">{index + 1}</th>
-            <td>1</td>
+            <td>{product.id}</td>
             <td>{product.name}</td>
             <td>{product.price}</td>
             <td>
@@ -17,7 +21,7 @@ export default function ProductItem(props) {
             </td>
             <td>
                 <button type="button" className="btn btn-success mr-10 btn-pd">Sửa</button>
-                <button type="button" className="btn btn-danger btn-pd">Xóa</button>
+                <button type="button" className="btn btn-danger btn-pd" onClick={()=> handleDelete(product.id)}>Xóa</button>
             </td>
         </tr>
     );

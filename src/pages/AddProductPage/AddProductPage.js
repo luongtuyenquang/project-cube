@@ -39,6 +39,7 @@ export default function AddProductPage() {
           });
     }
 
+    
    return (
         <div className='container'>
             <form onSubmit={handleSubmitForm}>

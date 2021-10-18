@@ -1,8 +1,12 @@
 import './ProductList.css';
 import ProductItem from "../ProductItem/ProductItem";
+import { connect } from "react-redux"
 
-export default function ProductList() {
-   
+ function ProductList(props) {
+    const renderProduct = props.products.map((product, index) => {
+        return <ProductItem product={product} key={index}/>
+    })
+    
     return (
         <div className="panel panel-success">
             <div className="panel-heading heading-color">Danh sách sản phẩm</div>
@@ -19,8 +23,7 @@ export default function ProductList() {
                     </tr>
                 </thead>
                 <tbody>
-                    <ProductItem />
-                    <ProductItem />
+                    {renderProduct}
                 </tbody>
                 </table>
             </div>
@@ -28,3 +31,10 @@ export default function ProductList() {
     );
 }
 
+const mapStateToProps = state => {
+    return {
+        products: state.products
+    }
+}
+
+export default connect(mapStateToProps, null)(ProductList)

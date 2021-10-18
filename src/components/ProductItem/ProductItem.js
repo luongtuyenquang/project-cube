@@ -2,10 +2,11 @@ import './ProductItem.css';
 
 export default function ProductItem(props) {
     const product = props.product
+    const index = props.index
 
     return (
         <tr>
-            <th scope="row">1</th>
+            <th scope="row">{index + 1}</th>
             <td>1</td>
             <td>{product.name}</td>
             <td>{product.price}</td>

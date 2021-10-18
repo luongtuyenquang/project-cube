@@ -18,7 +18,7 @@ function ProductList(props) {
     }, [])
     
     const renderProduct = products.map((product, index) => {
-        return <ProductItem product={product} key={index}/>
+        return <ProductItem product={product} key={index} index={index}/>
     })
 
 

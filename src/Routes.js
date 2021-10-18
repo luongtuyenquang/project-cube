@@ -7,13 +7,13 @@ import AddProductPage from "./pages/AddProductPage/AddProductPage";
 export default function Routes() {
     return (
         <Switch>
-            <Route exact path='/home'>
+            <Route exact path='/'>
                 <HomePage />
             </Route>
-            <Route path='/product-list'>
+            <Route exact path='/product'>
                 <ProductListPage />
             </Route>
-            <Route path='/product/add'>
+            <Route exact path='/product/add'>
                 <AddProductPage />
             </Route>
             <Route path='/product/:id/edit'>

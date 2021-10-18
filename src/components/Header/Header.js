@@ -9,10 +9,10 @@ export default function Header() {
                     <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul className="nav navbar-nav">
                             <li>
-                                <NavLink exact to='/home'>Trang chủ</NavLink>
+                                <NavLink exact to='/'>Trang chủ</NavLink>
                             </li>
                             <li>
-                                <NavLink exact to='/product-list'>Quản lý sản phẩm</NavLink>
+                                <NavLink exact to='/product'>Quản lý sản phẩm</NavLink>
                             </li>
                         </ul>
                     </div>

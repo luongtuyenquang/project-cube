@@ -57,9 +57,9 @@ export default function AddProductPage() {
             })
         }else {
             axios.post('https://616d1e8637f997001745d866.mockapi.io/api/products', {
-            name: txtName, //name: là name trong bảng DB
-            price: txtPrice, //price: là price trong bảng DB
-            status: chkbStatus //status: là status trong bảng DB
+            name: txtName,
+            price: txtPrice,
+            status: chkbStatus
             })
             .then(function (response) {
                 history.goBack()

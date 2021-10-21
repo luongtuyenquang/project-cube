@@ -7,17 +7,23 @@ const axios = require('axios');
 
 function ProductList(props) {
     const [products, setProduct] = useState([])
-    
+    const [page, setPage] = useState([])
+    const [numberPage, setNumberPage] = useState(0)
+
+    const pageSize = 5
+
      useEffect(() => {
         async function fetchAPI(){
             const url = 'https://616d1e8637f997001745d866.mockapi.io/api/products'
             const res = await axios.get(url)
             setProduct(res.data)
+            setPage(res.data.slice(0, 5))
+            setNumberPage(res.data.length / pageSize)
         }
         fetchAPI()
     }, [])
-    
-    const renderProduct = products.map((product, index) => {
+
+    const renderProduct = page.map((product, index) => {
         return <ProductItem product={product} key={index} index={index} delete={deleteProduct}/>
     })
 
@@ -29,6 +35,24 @@ function ProductList(props) {
         setProduct(newProductList)
     }
 
+    function numberPagination(number){
+        const arr = []
+        for(let i = 1; i <= number; i++){
+            arr.push(i)
+        }
+        return arr.map((elm, index) => {
+            return (
+                <div key={index}>
+                    <button onClick={() => handleSwitchPage(elm)}>{elm}</button>
+                </div>
+            )
+        })
+    }
+
+    function handleSwitchPage(number){
+        const end = pageSize * number
+        setPage(products.slice(end - pageSize, end))
+    }
     return (
         <div className="panel panel-success">
             <div className="panel-heading heading-color">Danh sách sản phẩm</div>
@@ -48,6 +72,9 @@ function ProductList(props) {
                     {renderProduct}
                 </tbody>
                 </table>
+            </div>
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+                {numberPagination(Math.ceil(numberPage))}
             </div>
         </div>
     );
